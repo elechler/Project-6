@@ -15,10 +15,7 @@
 // const checkWin = () => {
 
 // }
-// //listen for the start game button to be pressed
-// startButton.addEventListener('click', () => {
 
-// });
 // //listen for the onscreen keyboard to be clicked
 // qwerty.addEventListener('click', e => {
 
@@ -27,7 +24,6 @@
 
 const qwerty = document.getElementById('qwerty');
 const phrase = document.getElementById('phrase');
-const startButton = document.getElementsByClassName('.btn__reset');
 const missed = 0;
 
 const phrases = [
@@ -38,16 +34,13 @@ const phrases = [
     'Shannon is the best kid on the block'
 ];
 
+//hides main container when you click START GAME
 
-
-
-
-//hides main container when you click anywhere, NOT JUST THE BUTTON START GAME
 const overlay = document.querySelectorAll('.start');
+const startButton = document.querySelectorAll('.btn__reset');  
     for (let i = 0 ; i < overlay.length; i++) {
-        overlay[i].addEventListener('click', function () {
+        startButton[i].addEventListener('click', function () {
             overlay[i].style.display = 'none';
-            
         });
     }
     
