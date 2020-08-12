@@ -1,8 +1,4 @@
-                        //make sure you have this in program (from project review)
-// //adds the letters of a string to the display
-// const addPhraseToDisplay = arr => {
-
-// }
+                          //make sure you have this in program (from project review)
 // //check if a letter is in the phrase
 // const checkLetter = button => {
 
@@ -16,12 +12,9 @@
 // qwerty.addEventListener('click', e => {
 
 // });
-//      START OF MY CODE....
-const qwerty = document.getElementById('qwerty');
-const phrase = document.getElementById('phrase');
-const missed = 0;
+                                                //      START OF MY CODE....
 
-                        //hides main container when you click START GAME
+                                    //hides main container when you click START GAME
 const overlay = document.querySelectorAll('.start');
 const startButton = document.querySelectorAll('.btn__reset');  
     for (let i = 0 ; i < overlay.length; i++) {
@@ -38,70 +31,68 @@ const phrases = [
     'Shannon is the best kid on the block'
 ];
 
-//create a function that returns a random phrase from an array        
-// function getRandomPhraseAsArray(arr) {
-//     const randomNumber = Math.floor(Math.random() * arr.length );
-//     const randomPhrase = arr[randomNumber];
-//         function splitFunction() {
-//             let splitPhrase = randomPhrase.split("");
-//             console.log(splitPhrase);
-//         }
-//             splitFunction();   
-//         }
-// let test = getRandomPhraseAsArray(phrases);
-        
+                        //create a function that returns a random phrase from an array 
+ 
+const phrase = document.getElementById('phrase');
 
+function getRandomPhraseAsArray(arr){
+    const randomPhrase = phrases[Math.floor(Math.random() * phrases.length)];
+    const splitPhrase = randomPhrase.split("");
+    console.log(splitPhrase);
+    return splitPhrase;
+  } 
+const phraseArray = getRandomPhraseAsArray(phrases);
+  
+                                //adds the letters of the random phrase to the display
 
+  function addPhraseToDisplay(arr) {
+    for (let i = 0; i < arr.length; i ++) {
+      let li = document.createElement("LI");
+      li.textContent = arr[i];
+      const displayPhrase = document.querySelector("#phrase ul");
+      displayPhrase.appendChild(li);
+        if ( arr[i] !== " ") {
+            li.classList.add("letter");
+            } else {
+                li.classList.add("space");
+            }
+    }
+}
+addPhraseToDisplay(phraseArray); 
+/////////////////////////////////////MINE//////////////////////////////////////
+                //CREATE A CHECK LETTER FUNCTION, check if a letter is in the phrase
 
-
-function getRandomPhraseAsArray(arr) {
-    const randomNumber = Math.floor(Math.random() * arr.length );
-    const randomPhrase = arr[randomNumber];
-        function splitFunction() {
-            let splitPhrase = [randomPhrase.split("")];
-            console.log(splitPhrase);
-        }
-            splitFunction();   
-        }
-const splitPhrase = [getRandomPhraseAsArray(phrases)];
-      
-// const test = 'test';
-// document.querySelector('ul').innerHTML = test;
-
-
-// //adds the letters of a string to the display
-// const addPhraseToDisplay = arr => {
-
+// function checkLetter(button) {
+//     let inputLetter = document.getElementsByClassName('.letter');
+//     let correctLetter = null;
+//     for (let i = 0; i < inputLetter.length; i ++) {
+//         if ( inputLetter[i].textContent === button) {
+//         inputLetter[i].classList.add("show");
+//         let match = inputLetter[i].textContent;
+//         console.log(match);
+//         return match;
+//     }
+//     }
 // }
+// checkLetter();
 
-//STUCK HERE--- NOTHING WORKS BELOW THIS
-function addPhraseToDisplay(arr) {
-    const listItems = document.getElementsByTagName('ul');
-    for (let i = 0; i < listItems.length; i +=1) {
-            listItems[i].textContent = listItems[i].textContent;
-            //document.querySelector('ul').innerHTML = listItems;
-            
-            };
-   }
-addPhraseToDisplay(splitPhrase);
+//const qwerty = document.getElementById('qwerty');
 
+//                                     //listen for the onscreen keyboard to be clicked
+// qwerty.addEventListener('click', e => {
+//     let element = document.getElementsByTagName('button')[0];
+//     for ( let i = 0; i < element.length; i++ ) {
+//         if (e.target.tagName == 'BUTTON') {
+//             element.classList.add("chosen");
+//             //element.style.display = 'none';
+//         } 
+
+//     }
     
-    
+// });
+
+const missed = 0;
+
+///////////////////////////////END MINE////////////////////////////////////////////
 
 
-
-
-
-
-
-//CREATE A CHECK LETTER FUNCTION:
- //check if a letter is in the phrase
-// const checkLetter = button => {
-// }
-
-// function checkLetter(buttonClicked) {
-
-// }
-
-// const checkLetter = document.getElementsByTagName('li');
-// console.log(checkLetter);
