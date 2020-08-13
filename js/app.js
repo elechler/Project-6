@@ -47,52 +47,124 @@ const phraseArray = getRandomPhraseAsArray(phrases);
 
   function addPhraseToDisplay(arr) {
     for (let i = 0; i < arr.length; i ++) {
-      let li = document.createElement("LI");
+      let li = document.createElement('LI');
       li.textContent = arr[i];
-      const displayPhrase = document.querySelector("#phrase ul");
+      const displayPhrase = document.querySelector('#phrase ul');
       displayPhrase.appendChild(li);
-        if ( arr[i] !== " ") {
-            li.classList.add("letter");
+        if ( arr[i] !== ' ') {
+            li.classList.add('letter');
             } else {
-                li.classList.add("space");
+                li.classList.add('space');
             }
     }
 }
 addPhraseToDisplay(phraseArray); 
+
+/////////////////////////////////////not MINE//////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////
+
+// // // check if a letter is in the phrase
+
+function checkLetter (button) {
+    let letters = document.querySelectorAll('.letter')
+    let match = '';
+    for (let i = 0; i < letters.length; i++) {
+        const li = letters[i];
+      if (button.textContent === li.textContent.toLowerCase() ) {
+       match = li.classList.add('show');
+       } 
+    }
+    return match;
+}
+// // // Listen for the onscreen keyboard to be clicked
+qwerty.addEventListener('click', (e) => {
+    const button = e.target;
+    const buttons = document.querySelector('button');
+    if (button.tagName === 'BUTTON') {
+        button.classList.add('chosen');
+    } 
+    const letterFound =  checkLetter(button);
+    const letters = document.querySelectorAll('.letter');
+    const show = document.querySelectorAll('.show');
+    if (letterFound.className !== 'show' && button.tagName === 'BUTTON') {
+        const li = document.querySelector('.tries');
+        missed ++;
+        li.remove();
+    }
+checkWin();
+return letterFound;    
+});
+
+
+/////////////////////////////////////MINE//////////////////////////////////////
 /////////////////////////////////////MINE//////////////////////////////////////
                 //CREATE A CHECK LETTER FUNCTION, check if a letter is in the phrase
+// const qwerty = document.getElementById('qwerty');
+// const buttons = document.querySelectorAll('button');
 
-// function checkLetter(button) {
-//     let inputLetter = document.getElementsByClassName('.letter');
-//     let correctLetter = null;
-//     for (let i = 0; i < inputLetter.length; i ++) {
-//         if ( inputLetter[i].textContent === button) {
-//         inputLetter[i].classList.add("show");
-//         let match = inputLetter[i].textContent;
-//         console.log(match);
-//         return match;
-//     }
-//     }
+// function checkLetter(arr) {
+//     for (let i = 0; i < arr.length; i ++) {
+//         let letters = document.querySelectorAll('.letter');
+//         let match = ''; //null?
+//             for (let i = 0; i < letters.length; i ++) {
+//                 const li = letters[i];
+//                     if ( arr[i] === li.textContent.toLowerCase()) { // textContent to button?
+//                         match = li.classList.add('show');
+//                         console.log(letters[i]);
+//                     }
+//             }
+//             return match;
+//  }
 // }
-// checkLetter();
+//  //checkLetter();
 
-//const qwerty = document.getElementById('qwerty');
-
-//                                     //listen for the onscreen keyboard to be clicked
-// qwerty.addEventListener('click', e => {
-//     let element = document.getElementsByTagName('button')[0];
-//     for ( let i = 0; i < element.length; i++ ) {
-//         if (e.target.tagName == 'BUTTON') {
-//             element.classList.add("chosen");
-//             //element.style.display = 'none';
-//         } 
-
-//     }
     
+// qwerty.addEventListener('click', (e) => {
+//     const button = e.target;
+//     //const buttons = document.querySelectorAll('button');
+//         if (button.tagName == 'BUTTON') {
+//             button.classList.add("chosen");
+//             //checkLetter(); use this inside this function
+//             //const letterFound = checkLetter(button);
+//         }      
 // });
 
-const missed = 0;
+// const letterFound = checkLetter(buttons);
+
+//                                     //listen for the onscreen keyboard to be clicked
+
+
+// const missed = 0;
 
 ///////////////////////////////END MINE////////////////////////////////////////////
 
+
+
+
+
+
+
+
+// // check if the game has been won or lost
+
+// function checkWin () {
+//     const letters = document.querySelectorAll('.letter');
+//     const show = document.querySelectorAll('.show');
+//     const liLetters = letters;
+//     const liShow = show;
+//     const lost = `You Lose`;
+//     const win = `You Win`;
+//   if  (liLetters.length == liShow.length) {
+//         const overLayDiv = document.querySelector('#overlay');
+//         overLayDiv.classList.remove("start");
+//         overLayDiv.classList.add("win");
+//         overLayDiv.innerHTML = `<h1>${win}</h1>`;
+//         overLayDiv.style.display = 'flex';
+//     } else if   (missed > 4) {
+//         overLayDiv.classList.remove("start");
+//         overLayDiv.classList.add("lose");
+//         overLayDiv.innerHTML = `<h1>${lost}</h1>`;
+//         overLayDiv.style.display = 'flex';
+//     }
+// }
 
