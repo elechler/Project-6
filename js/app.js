@@ -30,25 +30,23 @@ const phrases = [
     'Emerson has one thousand nicknames',
     'Shannon is the best kid on the block'
 ];
+const missed = 0;
 
-                        //create a function that returns a random phrase from an array 
- 
+                        //create a function that returns a random phrase and splits it
 const phrase = document.getElementById('phrase');
 
 function getRandomPhraseAsArray(arr){
     const randomPhrase = phrases[Math.floor(Math.random() * phrases.length)];
     const splitPhrase = randomPhrase.split("");
-    console.log(splitPhrase);
     return splitPhrase;
   } 
 const phraseArray = getRandomPhraseAsArray(phrases);
-  
+                                
                                 //adds the letters of the random phrase to the display
-
   function addPhraseToDisplay(arr) {
     for (let i = 0; i < arr.length; i ++) {
       let li = document.createElement('LI');
-      li.textContent = arr[i];
+      li.textContent = arr[i]; //does lower case change work?
       const displayPhrase = document.querySelector('#phrase ul');
       displayPhrase.appendChild(li);
         if ( arr[i] !== ' ') {
@@ -59,112 +57,118 @@ const phraseArray = getRandomPhraseAsArray(phrases);
     }
 }
 addPhraseToDisplay(phraseArray); 
+////////////////////////////////////////////////////////////////up above works
+//////////////////////////////////////////////////////down below is where you left off
+                                ////////listen for the onscreen keyboard to be clicked
 
-/////////////////////////////////////not MINE//////////////////////////////////////
-///////////////////////////////////////////////////////////////////////////
+const qwerty = document.getElementById('qwerty');
+const buttons = document.querySelectorAll('button');
+let li = document.querySelector('#phrase');
+let letter = li.firstElementChild.firstElementChild;//not grabbing right thing
 
-// // // check if a letter is in the phrase
 
-function checkLetter (button) {
-    let letters = document.querySelectorAll('.letter')
-    let match = '';
-    for (let i = 0; i < letters.length; i++) {
-        const li = letters[i];
-      if (button.textContent === li.textContent.toLowerCase() ) {
-       match = li.classList.add('show');
-       } 
-    }
-    return match;
+let buttonContent = buttons[2].textContent; //not grabbing the right thing
+for (i = 0; i < buttons; i++) {
+    let buttonText = buttons[i].textContent;
+    console.log(buttonText);
 }
-// // // Listen for the onscreen keyboard to be clicked
-qwerty.addEventListener('click', (e) => {
-    const button = e.target;
-    const buttons = document.querySelector('button');
-    if (button.tagName === 'BUTTON') {
-        button.classList.add('chosen');
-    } 
-    const letterFound =  checkLetter(button);
-    const letters = document.querySelectorAll('.letter');
-    const show = document.querySelectorAll('.show');
-    if (letterFound.className !== 'show' && button.tagName === 'BUTTON') {
-        const li = document.querySelector('.tries');
-        missed ++;
-        li.remove();
+console.log(buttonContent);
+console.log(letter.textContent.toLowerCase()); 
+if (letter.textContent.toLowerCase() === buttonContent) {
+    console.log('its a match');
+}
+
+
+
+function listenToButton () {
+    for ( i = 0; i < buttons.length; i++) {
+        buttons[i].addEventListener ('click', function () {
+            this.classList.add('chosen');
+            let letter = this.textContent;
+            console.log(letter);
+            if (letter === buttonContent) {///this doesn't work
+                console.log('its a match');
+            }
+        });
     }
-checkWin();
-return letterFound;    
-});
+}
+listenToButton();
 
-
-/////////////////////////////////////MINE//////////////////////////////////////
-/////////////////////////////////////MINE//////////////////////////////////////
-                //CREATE A CHECK LETTER FUNCTION, check if a letter is in the phrase
-// const qwerty = document.getElementById('qwerty');
-// const buttons = document.querySelectorAll('button');
-
-// function checkLetter(arr) {
-//     for (let i = 0; i < arr.length; i ++) {
-//         let letters = document.querySelectorAll('.letter');
-//         let match = ''; //null?
-//             for (let i = 0; i < letters.length; i ++) {
-//                 const li = letters[i];
-//                     if ( arr[i] === li.textContent.toLowerCase()) { // textContent to button?
-//                         match = li.classList.add('show');
-//                         console.log(letters[i]);
-//                     }
-//             }
-//             return match;
-//  }
-// }
-//  //checkLetter();
-
-    
-// qwerty.addEventListener('click', (e) => {
-//     const button = e.target;
-//     //const buttons = document.querySelectorAll('button');
-//         if (button.tagName == 'BUTTON') {
-//             button.classList.add("chosen");
-//             //checkLetter(); use this inside this function
-//             //const letterFound = checkLetter(button);
-//         }      
-// });
-
-// const letterFound = checkLetter(buttons);
-
-//                                     //listen for the onscreen keyboard to be clicked
-
-
-// const missed = 0;
-
-///////////////////////////////END MINE////////////////////////////////////////////
-
-
-
-
-
-
-
-
-// // check if the game has been won or lost
-
-// function checkWin () {
-//     const letters = document.querySelectorAll('.letter');
-//     const show = document.querySelectorAll('.show');
-//     const liLetters = letters;
-//     const liShow = show;
-//     const lost = `You Lose`;
-//     const win = `You Win`;
-//   if  (liLetters.length == liShow.length) {
-//         const overLayDiv = document.querySelector('#overlay');
-//         overLayDiv.classList.remove("start");
-//         overLayDiv.classList.add("win");
-//         overLayDiv.innerHTML = `<h1>${win}</h1>`;
-//         overLayDiv.style.display = 'flex';
-//     } else if   (missed > 4) {
-//         overLayDiv.classList.remove("start");
-//         overLayDiv.classList.add("lose");
-//         overLayDiv.innerHTML = `<h1>${lost}</h1>`;
-//         overLayDiv.style.display = 'flex';
+// function listenToButton() {
+//     for ( i = 0; i < buttons.length; i++) {
+//         buttons[i].addEventListener ('click', function () {
+//             this.classList.add('chosen');
+// ////////////////////////////////////////////////////////above works
+//         }
+//     console.log(this.textContent);
 //     }
 // }
+// listenToButton();
+
+                //CREATE A CHECK LETTER FUNCTION, check if a letter is in the phrase
+
+//     function checkLetter() {
+// }
+//     let match;
+//         for ( j = 0; j < li.length; j++ ) {
+//             if ( li[j].textContent === buttons[i].textContent) {
+//                 li[j].classList.add('show');
+//                 match = buttons[j].textContent;
+                
+//         } 
+//         return match;
+// }
+// checkLetter();
+          
+/////////////////////////////////////////////////////////////////////////
+// function listenToButton() {
+//     for ( i = 0; i < buttons.length; i++) {
+//     buttons[i].addEventListener('click', function () {
+//     this.classList.add('chosen');
+//     });
+//     console.log(buttons[i]);
+//     }
+// }
+// listenToButton();
+  ////////////////////////////////////////////////////////////////////////////  
+  ////////////////////////////////////////////////////////////////////////////  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
