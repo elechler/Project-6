@@ -63,22 +63,8 @@ addPhraseToDisplay(phraseArray);
 
 const qwerty = document.getElementById('qwerty');
 const buttons = document.querySelectorAll('button');
-let li = document.querySelector('#phrase');
-let letter = li.firstElementChild.firstElementChild;//not grabbing right thing
-
-
-let buttonContent = buttons[2].textContent; //not grabbing the right thing
-for (i = 0; i < buttons; i++) {
-    let buttonText = buttons[i].textContent;
-    console.log(buttonText);
-}
-console.log(buttonContent);
-console.log(letter.textContent.toLowerCase()); 
-if (letter.textContent.toLowerCase() === buttonContent) {
-    console.log('its a match');
-}
-
-
+let li = document.querySelector('#phrase ul');
+let letter = li.children;
 
 function listenToButton () {
     for ( i = 0; i < buttons.length; i++) {
@@ -86,13 +72,14 @@ function listenToButton () {
             this.classList.add('chosen');
             let letter = this.textContent;
             console.log(letter);
-            if (letter === buttonContent) {///this doesn't work
-                console.log('its a match');
-            }
         });
     }
 }
 listenToButton();
+console.log(phraseArray);
+//if phrase array containe variable letter mark show
+
+
 
 // function listenToButton() {
 //     for ( i = 0; i < buttons.length; i++) {
@@ -134,8 +121,12 @@ listenToButton();
   ////////////////////////////////////////////////////////////////////////////  
 
 
-
-
+// NOTES
+//   node.textContent
+//   Set the text content of a node:
+  
+//   node.textContent = text
+//   var x = document.getElementById("myBtn").textContent;  
 
 
 
