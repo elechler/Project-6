@@ -65,6 +65,7 @@ qwerty.addEventListener('click', (event) => {
     if (event.target.tagName == 'BUTTON') {
         event.target.classList.add('chosen');
         event.target.setAttribute('disabled', 'true')//???????
+        //event.target.style.transition = '';
         let letterFound = checkLetter(event.target);
         if (letterFound == null){
             missed++;

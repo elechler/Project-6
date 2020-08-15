@@ -86,7 +86,9 @@ button {
   color: transparent;
   background: var(--color-neutral-light);
   border-radius: 5px;
+  
 }
+
 
 .space {
   width: 15px;
