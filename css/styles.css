@@ -76,6 +76,9 @@ button {
 }
 
 /* Phrase */
+.space {
+  width: 15px;
+}
 
 .letter {
   font-size: var(--font-size-medium);
@@ -84,19 +87,16 @@ button {
   padding: 20px 1px 0 1px;
   margin-right: 2px;
   color: transparent;
-  background: var(--color-neutral-light);
   border-radius: 5px;
-  
-}
-
-
-.space {
-  width: 15px;
+  background: var(--color-neutral-light);
 }
 
 .show {
   color: #000;
-  background-color: #76CE82;
+  background-image: linear-gradient(#76ce82, white);
+  border: 3px solid #5b85b7;
+  transition: border;
+  transition-duration: 3s;
 }
 
 /* Keyboard */
