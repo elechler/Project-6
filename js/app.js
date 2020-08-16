@@ -12,7 +12,7 @@ const phrases = [
     'Shannon is the best kid on the block'
     ];
 const overlay = document.getElementById('overlay');
-const scoreboard = document.querySelector('#scoreboard ol');
+const scoreboard = document.querySelector('#scoreboard ol');//////////////////
 const hearts = document.getElementsByTagName('img');
 let li = document.querySelector('#phrase ul');
 let letter = li.children;
@@ -81,18 +81,60 @@ qwerty.addEventListener('click', (event) => {
 const checkWin = () => {
     let letter = document.getElementsByClassName('letter');
     let show = document.getElementsByClassName('show');
+    
     if (letter.length == show.length) {
         overlay.className = 'win';
         overlay.firstElementChild.textContent = 'You WON!!';
         overlay.style.display = 'flex';
-        phrase.style.display = 'none';
+        startButton.style.display = 'none';
     } if ( missed > 4) {
         overlay.className = 'lose';
         overlay.firstElementChild.textContent = `I'm sorry, you LOST!!`;
         overlay.style.display = 'flex';
-        phrase.style.display = 'none';
+        //startButton.style.display = 'none';
+        let newGameButton = document.createElement('button'); 
+        let resetScreen = document.getElementsByTagName('main-container ')[0];    
+        startButton.appendChild(newGameButton.textContent('New Game'));
+        
     }
 }
 ///////////////////////////// END OF create a checkWin funcion  
   
-  
+// Add a button to the “success” and “failure” screens that reset the game. You’ll have to 
+// recreate the buttons in the keyboard, generate a new random phrase, and set the number 
+// of misses to zero.
+///////////////////////////// Create a Reset funcion  
+
+
+// let newGame = document.createElement('BUTTON').textContent = 'New Game';     
+// let resestKeyboard = document.getElementsByClassName('chosen');
+    
+// function resetGame() {
+//     for ( let i = 0; i < resestKeyboard.length; i++) {
+//         resestKeyboard[i].classList.remove('chosen');
+//     }
+//         missed = 0;
+//         overlay.style.display = 'initial';
+//         startButton.style.display = 'none';
+//         overlay.appendChild(newGame);
+//         getRandomPhraseAsArray(phrases);
+//         addPhraseToDisplay(randomPhrase);
+// }
+
+
+
+
+    
+    
+
+
+
+
+///////////////////////////// END OF Reset funcion  
+
+
+
+
+
+
+
