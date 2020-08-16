@@ -65,7 +65,6 @@ qwerty.addEventListener('click', (event) => {
     if (event.target.tagName == 'BUTTON') {
         event.target.classList.add('chosen');
         event.target.setAttribute('disabled', 'true')//???????
-        //event.target.style.transition = '';
         let letterFound = checkLetter(event.target);
         if (letterFound == null){
             missed++;
@@ -77,64 +76,91 @@ qwerty.addEventListener('click', (event) => {
 });
 ///////////////////////////// END OF add an Event Listener to the keyboard
 
-///////////////////////////// create a checkWin funcion
-const checkWin = () => {
-    let letter = document.getElementsByClassName('letter');
-    let show = document.getElementsByClassName('show');
-    
-    if (letter.length == show.length) {
-        overlay.className = 'win';
-        overlay.firstElementChild.textContent = 'You WON!!';
-        overlay.style.display = 'flex';
-        startButton.style.display = 'none';
-    } if ( missed > 4) {
-        overlay.className = 'lose';
-        overlay.firstElementChild.textContent = `I'm sorry, you LOST!!`;
-        overlay.style.display = 'flex';
-        //startButton.style.display = 'none';
-        let newGameButton = document.createElement('button'); 
-        let resetScreen = document.getElementsByTagName('main-container ')[0];    
-        startButton.appendChild(newGameButton.textContent('New Game'));
-        
-    }
-}
-///////////////////////////// END OF create a checkWin funcion  
-  
-// Add a button to the “success” and “failure” screens that reset the game. You’ll have to 
-// recreate the buttons in the keyboard, generate a new random phrase, and set the number 
-// of misses to zero.
 ///////////////////////////// Create a Reset funcion  
-
-
 // let newGame = document.createElement('BUTTON').textContent = 'New Game';     
 // let resestKeyboard = document.getElementsByClassName('chosen');
-    
-// function resetGame() {
-//     for ( let i = 0; i < resestKeyboard.length; i++) {
-//         resestKeyboard[i].classList.remove('chosen');
-//     }
-//         missed = 0;
-//         overlay.style.display = 'initial';
-//         startButton.style.display = 'none';
-//         overlay.appendChild(newGame);
-//         getRandomPhraseAsArray(phrases);
-//         addPhraseToDisplay(randomPhrase);
-// }
 
 
-
-
-    
-    
-
-
-
+function resetGame() {
+    let resestKeyboard = document.getElementsByClassName('chosen', 'show');
+    for ( let i = 0; i < resestKeyboard.length; i++) {
+        resestKeyboard[i].classList.remove('chosen', 'show');
+        resestKeyboard[i].removeAttribute('disabled');///not working
+    }
+        missed = 0;
+        overlay.classList.remove('win', 'lose');
+        getRandomPhraseAsArray(phrases);
+        //addPhraseToDisplay(randomPhrase);
+        console.log(missed);
+}
 
 ///////////////////////////// END OF Reset funcion  
 
 
 
+///////////////////////////// create a checkWin funcion
+const checkWin = () => {
+    let letter = document.getElementsByClassName('letter');
+    let show = document.getElementsByClassName('show');
+        if (letter.length == show.length) {
+            overlay.className = 'win';
+            overlay.firstElementChild.textContent = 'You WON!!';
+            overlay.style.display = 'flex';
+            startButton.textContent = 'Play Again';
+        }
+    if ( missed > 4) {
+        overlay.className = 'lose';
+        overlay.firstElementChild.textContent = `I'm sorry, you LOST!!`;
+        overlay.style.display = 'flex';
+        startButton.textContent ='Play Again';
+            startButton.addEventListener('click', (event) => {
+                //console.log('this is a test');
+                resetGame();
+             });
+    
+    }
+    
+}
+    
+        
+            
+                    
+                        
+///////////////////////////// END OF create a checkWin funcion  
+  
+// Add a button to the “success” and “failure” screens that reset the game. You’ll have to 
+// recreate the buttons in the keyboard, generate a new random phrase, and set the number 
+// of misses to zero.
 
 
+// let newGame = document.createElement('BUTTON').textContent = 'New Game';     
+// let resestKeyboard = document.getElementsByClassName('chosen');
+   
 
 
+///////////////////////////// last copy of what worked
+
+// const checkWin = () => {
+//     let letter = document.getElementsByClassName('letter');
+//     let show = document.getElementsByClassName('show');
+//         if (letter.length == show.length) {
+//             overlay.className = 'win';
+//             overlay.firstElementChild.textContent = 'You WON!!';
+//             overlay.style.display = 'flex';
+//             startButton.textContent = 'Play Again';
+//         }
+//     if ( missed > 4) {
+//         overlay.className = 'lose';
+//         overlay.firstElementChild.textContent = `I'm sorry, you LOST!!`;
+//         overlay.style.display = 'flex';
+//         startButton.textContent ='Play Again';
+//             startButton.addEventListener('click', (event) => {
+//                 console.log('this is a test');
+//              });
+    
+//     }
+    
+// }
+
+
+///////////////////////////// last copy of what worked
