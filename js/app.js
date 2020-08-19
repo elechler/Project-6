@@ -78,14 +78,14 @@ const resetGame = () => {
             while (li.firstChild) {
                 li.removeChild(li.firstChild);
             }
-            const newPhaseArray = getRandomPhraseAsArray(phrases);
-            addPhraseToDisplay(newPhaseArray);
+            const newPhraseArray = getRandomPhraseAsArray(phrases);
+            getRandomPhraseAsArray(phrases);
+            addPhraseToDisplay(newPhraseArray);
             for(let i = 0; i < resestKeyboard.length; i++){
                 resestKeyboard[i].classList.remove('chosen');
                 resestKeyboard[i].removeAttribute('disabled');
                 hearts[i].src = 'images/liveHeart.png';
             }
-            document.getElementById('phrase').style.display = 'block';
 }
 
 ///////////////////////////// create a checkWin funcion ////////////////////////////////////
@@ -97,15 +97,14 @@ const checkWin = () => {
             overlay.firstElementChild.textContent = 'You WON!!';
             overlay.style.display = 'flex';
             startButton.textContent = 'Play Again';
-            resetGame();
         }
-    if ( missed > 4) {
-        overlay.className = 'lose';
-        overlay.firstElementChild.textContent = `I'm sorry, you LOST!!`;
-        overlay.style.display = 'flex';
-        startButton.textContent ='Play Again';
-            startButton.addEventListener('click', (event) => {
-                resetGame();
-             });
-    }
+        if ( missed > 4) {
+            overlay.className = 'lose';
+            overlay.firstElementChild.textContent = `I'm sorry, you LOST!!`;
+            overlay.style.display = 'flex';
+            startButton.textContent ='Play Again';
+        }
+        startButton.addEventListener('click', (event) => {
+                    resetGame();
+                });
 }
